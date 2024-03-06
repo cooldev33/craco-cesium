@@ -84,24 +84,14 @@ module.exports = options => ({
       };
 
       webpackConfig.plugins.push(
-        new CopyWebpackPlugin([
-          {
-            from: path.join(cesiumSource, "../Build/Cesium/Workers"),
-            to: path.join(cesiumPath, "Workers")
-          },
-          {
-            from: path.join(cesiumSource, "../Build/Cesium/ThirdParty"),
-            to: path.join(cesiumPath, "ThirdParty")
-          },
-          {
-            from: path.join(cesiumSource, "Assets"),
-            to: path.join(cesiumPath, "Assets")
-          },
-          {
-            from: path.join(cesiumSource, "Widgets"),
-            to: path.join(cesiumPath, "Widgets")
-          }
-        ]),
+        new CopyWebpackPlugin({
+          patterns: [
+            { from: path.join(cesiumSource, "../Build/Cesium/Workers"), to: path.join(cesiumPath, "Workers") },
+            { from: path.join(cesiumSource, "../Build/Cesium/ThirdParty"), to: path.join(cesiumPath, "ThirdParty") },
+            { from: path.join(cesiumSource, "Assets"), to: path.join(cesiumPath, "Assets") },
+            { from: path.join(cesiumSource, "Widgets"), to: path.join(cesiumPath, "Widgets") },
+          ],
+        }),
         ...(loadCSSinHTML
           ? [
               new HtmlWebpackTagsPlugin({
@@ -138,15 +128,11 @@ module.exports = options => ({
       // https://resium.darwineducation.com/installation1
 
       webpackConfig.plugins.push(
-        new CopyWebpackPlugin([
-          {
-            from: path.join(
-              cesiumSource,
-              `../Build/Cesium${prod ? "" : "Unminified"}`
-            ),
-            to: cesiumPath
-          }
-        ]),
+        new CopyWebpackPlugin({
+          patterns: [
+            { from: path.join(cesiumSource, `../Build/Cesium${prod ? "" : "Unminified"}`), to: cesiumPath },
+          ],
+        }),
         new HtmlWebpackTagsPlugin({
           append: false,
           tags: [
