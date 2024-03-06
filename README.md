@@ -48,7 +48,23 @@ Rewrite npm scripts in `package.json` as following:
 }
 ```
 
-### 4. Create craco config file
+### 4. (NEW!) Add npm overrides
+
+To fix package vulnerabilities, add npm overrides in `package.json` as following:
+
+```js
+{
+  // ...
+  "overrides": {
+    "resolve-url-loader": "^5.0.0",
+    "@svgr/webpack": "^8.1.0",
+    "webpack": "^5.90.3",
+    "copy-webpack-plugin": "^12.0.2"
+  }
+}
+```
+
+### 5. Create craco config file
 
 Create `craco.config.js` in the project root:
 
@@ -62,7 +78,7 @@ module.exports = {
 };
 ```
 
-### 5. Congratulations! 🎉
+### 6. Congratulations! 🎉
 
 Set up is complete! Enjoy your Cesium life.
 
