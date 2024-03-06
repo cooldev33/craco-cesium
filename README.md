@@ -64,7 +64,11 @@ To fix package vulnerabilities, add npm overrides in `package.json` as following
 }
 ```
 
-### 5. Create craco config file
+### 5. (NEW!) Update craco-cesium's index.js
+
+Replace the `index.js` file in your `craco-cesium` directory (the filepath should be something like `example/node_modules/craco-cesium/index.js`) with the [index.js file found in this repo](https://github.com/cooldev33/craco-cesium/blob/master/index.js).
+
+### 6. Create craco config file
 
 Create `craco.config.js` in the project root:
 
@@ -78,7 +82,7 @@ module.exports = {
 };
 ```
 
-### 6. Congratulations! 🎉
+### 7. Congratulations! 🎉
 
 Set up is complete! Enjoy your Cesium life.
 
@@ -93,6 +97,10 @@ If you are using [Resium](https://resium.darwineducation.com), you can import Ce
 ```js
 import { Color } from "cesium";
 import { Viewer, Entity } from "resium";
+import * as Cesium from "cesium";
+
+// Grant CesiumJS access to your ion assets
+// Cesium.Ion.defaultAccessToken = "paste your token here";
 ```
 
 ## 🔥Pro Tip: Enabling HMR
