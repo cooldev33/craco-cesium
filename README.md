@@ -33,7 +33,7 @@ yarn add @craco/craco craco-cesium cesium resium
 
 ### 3. Rewrite npm scripts
 
-Rewrite npm scripts in `package.json` as following:
+Rewrite npm scripts in your project's `package.json` as following:
 
 ```js
 {
@@ -50,7 +50,7 @@ Rewrite npm scripts in `package.json` as following:
 
 ### 4. (NEW!) Add npm overrides
 
-To fix package vulnerabilities, add npm overrides in `package.json` as following:
+To fix package vulnerabilities, add npm overrides in your project's `package.json` as following:
 
 ```js
 {
